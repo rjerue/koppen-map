@@ -1,6 +1,5 @@
 import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import data from "../data.json";
 import { GeoJsonObject } from "geojson";
 import { PromiseValue } from "type-fest";
 import styles from "./Map.module.css";
@@ -9,7 +8,7 @@ import { GeoJSONOptions } from "leaflet";
 
 async function load() {
   const d = await Promise.all(
-    data.climates.map(async (code) => ({
+    Object.keys(koppen).map(async (code) => ({
       code,
       data: await import(`../data/${code}.json`),
     }))

@@ -2,3 +2,13 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

@@ -21,14 +21,7 @@ const IndexPage = () => (
       />
     </Head>
     <Map />
-    <Card
-      style={{
-        bottom: 10,
-        left: 10,
-      }}
-    >
-      <Legend />
-    </Card>
+    <Legend />{" "}
   </div>
 );
 

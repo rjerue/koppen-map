@@ -5,3 +5,18 @@
   vertical-align: middle;
   outline: 1px black solid;
 }
+
+.legendRow {
+  justify-content: space-between;
+}
+
+.itemCol {
+  padding-right: 4px;
+}
+
+.toggle {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: -12px;
+}
