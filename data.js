@@ -1,6 +1,13 @@
 const fs = require("fs/promises");
 const raw = require("./raw-data.json");
-const makeName = (e) => e.split(" ")[0];
+
+function makeName(e) {
+  if (e === "Dfa Cold-Withouth_dry_season-Very_Cold_Winter") {
+    return "Dfd";
+  }
+  const code = e.split(" ")[0];
+  return code;
+}
 
 function duplicate360(feature) {
   const coordinates = feature.geometry.coordinates[0][0];
@@ -21,8 +28,15 @@ const propertiesSet = raw.features.reduce((set, e, i) => {
   return { ...set, [climate]: [...others, duplicate360(e)] };
 }, {});
 
+function jsonStringWithFixDfaDfd(code, json) {
+  const str = JSON.stringify(json);
+  if (code === "Dfd") {
+    return str.replace(/Dfa/g, "Dfd");
+  }
+  return str;
+}
+
 function makeGeoJson(name, features) {
-  const climate = name;
   const gj = {
     type: "FeatureCollection",
     features,
@@ -30,15 +44,9 @@ function makeGeoJson(name, features) {
     numberMatched: features.length,
     numberReturned: features.length,
   };
-  return fs.writeFile(`./data/${climate}.json`, JSON.stringify(gj));
+  return fs.writeFile(`./data/${name}.json`, jsonStringWithFixDfaDfd(name, gj));
 }
 
 Object.entries(propertiesSet).map(([name, features]) =>
   makeGeoJson(name, features)
-);
-fs.writeFile(
-  "./data.json",
-  JSON.stringify({
-    climates: Object.keys(propertiesSet),
-  })
 );

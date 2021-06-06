@@ -36,6 +36,10 @@ export const koppen = {
     color: "#000066",
     title: "Mediterranean-influenced warm-summer humid continental",
   },
+  Dfd: {
+    color: "#0000ff",
+    title: "Extremely cold subarctic",
+  },
   Cwa: { color: "#006633", title: "Monsoon-influenced humid subtropical" },
   Dsc: { color: "#983396", title: "Mediterranean-influenced subarctic" },
   Cwb: { color: "#5fc765", title: "Monsoon-influenced temperate oceanic" },
