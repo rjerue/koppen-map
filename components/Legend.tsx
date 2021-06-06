@@ -3,7 +3,7 @@ import { Card } from "./Card";
 import styles from "./Legend.module.css";
 
 export const Legend: React.FC = ({ children }) => {
-  const [isOpen, isOpenSet] = React.useState(true);
+  const [isOpen, isOpenSet] = React.useState(false);
   return (
     <Card className={styles.legend}>
       <button className={styles.toggle} onClick={() => isOpenSet(!isOpen)}>
