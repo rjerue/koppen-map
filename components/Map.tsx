@@ -1,19 +1,23 @@
 import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import { GeoJsonObject } from "geojson";
-import { PromiseValue } from "type-fest";
 import styles from "./Map.module.css";
 import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
 
-async function load() {
-  const d = await Promise.all(
-    Object.keys(koppen).map(async (code) => ({
+type GeoJsonState = {
+  code: string;
+  data: GeoJsonObject;
+}[];
+
+function load(set: React.Dispatch<React.SetStateAction<GeoJsonState>>) {
+  Object.keys(koppen).map(async (code) => {
+    const addition = {
       code,
       data: await import(`../data/${code}.json`),
-    }))
-  );
-  return d;
+    };
+    set((s) => s.concat(addition));
+  });
 }
 
 const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
@@ -24,11 +28,9 @@ const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
 };
 
 const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
-  const [json, jsonSet] = React.useState(
-    [] as PromiseValue<ReturnType<typeof load>>
-  );
+  const [json, jsonSet] = React.useState([] as GeoJsonState);
   React.useEffect(() => {
-    load().then((d) => jsonSet(d));
+    load(jsonSet);
   }, []);
 
   return (

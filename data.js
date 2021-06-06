@@ -14,10 +14,13 @@ function duplicate360(feature) {
   const added = coordinates.map(([l, r]) => [l + 360, r]);
   const subtracted = coordinates.map(([l, r]) => [l - 360, r]);
   return {
-    ...feature,
+    type: feature.type,
     geometry: {
       ...feature.geometry,
       coordinates: [[coordinates], [added], [subtracted]],
+    },
+    properties: {
+      climate: feature.properties.climate,
     },
   };
 }
