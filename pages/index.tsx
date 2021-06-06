@@ -43,7 +43,8 @@ const IndexPage = () => {
       <Card className={styles.card}>
         <h1 className={styles.header}>Köppen–Geiger Climate Classification</h1>
         <div>
-          Made with ❤️ by <a href="https://jerue.org/">Ryan Jerue</a>
+          <a href="https://github.com/rjerue/koppen-map">Developed</a> with ❤️
+          by <a href="https://jerue.org/">Ryan Jerue</a>
         </div>
       </Card>
       <Map state={state} />
