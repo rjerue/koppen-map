@@ -23,7 +23,7 @@ const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   }
 };
 
-export default function Map() {
+const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
   const [json, jsonSet] = React.useState(
     [] as PromiseValue<ReturnType<typeof load>>
   );
@@ -37,24 +37,31 @@ export default function Map() {
         className={`${styles.map}`}
         center={[51.505, -0.09]}
         zoom={3}
+        minZoom={2}
         worldCopyJump
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png"
         />
-        {json.map(({ code, data: d }) => (
-          <GeoJSON
-            style={{
-              color: koppen[code].color,
-            }}
-            key={code}
-            attribution='<a href="https://staging.igrac.kartoza.com/layers/igrac:other_climate_2007_koppen_geiger">igrac</a>'
-            data={d as GeoJsonObject}
-            onEachFeature={onGeoJSONFeature}
-          />
-        ))}
+        {json.map(({ code, data: d }) => {
+          const active = state[code];
+          return active ? (
+            <GeoJSON
+              style={{
+                color: koppen[code].color,
+                fillOpacity: 0.5,
+              }}
+              key={code}
+              attribution='<a href="https://staging.igrac.kartoza.com/layers/igrac:other_climate_2007_koppen_geiger">igrac</a>'
+              data={d as GeoJsonObject}
+              onEachFeature={onGeoJSONFeature}
+            />
+          ) : null;
+        })}
       </MapContainer>
     </div>
   );
-}
+};
+
+export default Map;

@@ -1,22 +1,39 @@
-.box {
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  vertical-align: middle;
-  outline: 1px black solid;
-}
-
 .legendRow {
-  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.itemCol {
-  padding-right: 4px;
+.legendContent {
+  max-height: 680px;
+  overflow-y: scroll;
+}
+
+.legend {
+  bottom: -2px;
+  left: -2px;
+  right: 0;
+  width: 100%;
+  position: fixed;
 }
 
 .toggle {
   position: absolute;
   left: 50%;
   right: 50%;
-  top: -12px;
+  top: -16px;
+  font-size: 18px;
+}
+
+.header {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 800px) {
+  .legendRowSm {
+    padding: 0px 8px 8px 8px;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
 }
