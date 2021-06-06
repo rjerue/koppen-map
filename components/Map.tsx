@@ -39,7 +39,7 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         className={`${styles.map}`}
         center={[51.505, -0.09]}
         zoom={3}
-        minZoom={2}
+        minZoom={3}
         worldCopyJump
       >
         <TileLayer
