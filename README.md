@@ -1,6 +1,6 @@
 # Köppen–Geiger Climate Map
 
-Back in College, I took a geography class and was enamoured by the Köppen–Geiger Climate Classification System. However, in all my years I have never found an interactive map that has every represented it well. Never until now!
+Back in College, I took a geography class and was enamoured by the Köppen–Geiger Climate Classification System. However, in all my years I have never found an interactive map that has every represented it well. Never until now that is!
 
 ## Commands
 
