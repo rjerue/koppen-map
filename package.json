@@ -5,8 +5,7 @@
     "dev": "next",
     "data": "node data",
     "build": "yarn data && next build",
-    "start": "next start",
-    "type-check": "tsc"
+    "start": "next start"
   },
   "dependencies": {
     "leaflet": "^1.7.1",
