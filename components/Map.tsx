@@ -1,24 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import { GeoJsonObject } from "geojson";
 import styles from "./Map.module.css";
 import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
-
-type GeoJsonState = {
-  code: string;
-  data: GeoJsonObject;
-}[];
-
-function load(set: React.Dispatch<React.SetStateAction<GeoJsonState>>) {
-  Object.keys(koppen).map(async (code) => {
-    const addition = {
-      code,
-      data: await import(`../data/${code}.json`),
-    };
-    set((s) => s.concat(addition));
-  });
-}
+import usePromise from "react-promise-suspense";
 
 const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   if (feature.properties && feature.properties.climate) {
@@ -27,12 +12,30 @@ const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   }
 };
 
-const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
-  const [json, jsonSet] = React.useState([] as GeoJsonState);
-  React.useEffect(() => {
-    load(jsonSet);
-  }, []);
+const getData = (code) => {
+  return import(`../data/${code}.json`).then((d) => d.default);
+};
 
+const GeoJsonLayer: React.FC<{ code: string; active: boolean }> = ({
+  code,
+  active,
+}) => {
+  const data = usePromise(getData, [code]);
+  return active ? (
+    <GeoJSON
+      style={{
+        color: koppen[code].color,
+        fillOpacity: 0.5,
+      }}
+      key={code}
+      attribution='Dataset: <a href="https://staging.igrac.kartoza.com/layers/igrac:other_climate_2007_koppen_geiger">igrac</a>'
+      data={data as any}
+      onEachFeature={onGeoJSONFeature}
+    />
+  ) : null;
+};
+
+const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
   return (
     <div className={`${styles.map} ${styles.mapWrapper}`}>
       <MapContainer
@@ -46,20 +49,12 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
           attribution='Tiles: <a href="http://stamen.com">Stamen</a>, Map: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png"
         />
-        {json.map(({ code, data: d }) => {
-          const active = state[code];
-          return active ? (
-            <GeoJSON
-              style={{
-                color: koppen[code].color,
-                fillOpacity: 0.5,
-              }}
-              key={code}
-              attribution='Dataset: <a href="https://staging.igrac.kartoza.com/layers/igrac:other_climate_2007_koppen_geiger">igrac</a>'
-              data={d as GeoJsonObject}
-              onEachFeature={onGeoJSONFeature}
-            />
-          ) : null;
+        {Object.keys(koppen).map((code) => {
+          return (
+            <Suspense key={code} fallback={<></>}>
+              <GeoJsonLayer code={code} active={state[code]} />
+            </Suspense>
+          );
         })}
       </MapContainer>
     </div>
