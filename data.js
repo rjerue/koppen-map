@@ -47,6 +47,18 @@ function makeGeoJson(name, features) {
   return fs.writeFile(`./data/${name}.json`, jsonStringWithFixDfaDfd(name, gj));
 }
 
-Object.entries(propertiesSet).map(([name, features]) =>
-  makeGeoJson(name, features)
-);
+async function main() {
+  try {
+    await fs.stat("./data");
+  } catch (_) {
+    await fs.mkdir("./data");
+  }
+
+  return Promise.all(
+    Object.entries(propertiesSet).map(([name, features]) =>
+      makeGeoJson(name, features)
+    )
+  );
+}
+
+main();
