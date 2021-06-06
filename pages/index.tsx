@@ -39,7 +39,7 @@ const IndexPage = () => {
   const [state, stateSet] = React.useState(defaultState());
 
   return (
-    <div>
+    <div className={styles.home}>
       <Card className={styles.card}>
         <h1 className={styles.header}>Köppen–Geiger Climate Classification</h1>
         <div>

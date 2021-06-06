@@ -6,9 +6,11 @@ export const Legend: React.FC = ({ children }) => {
   const [isOpen, isOpenSet] = React.useState(false);
   return (
     <Card className={styles.legend}>
-      <button className={styles.toggle} onClick={() => isOpenSet(!isOpen)}>
-        {isOpen ? "⬇️" : "⬆️"}
-      </button>
+      <div className={styles.toggleWrapper}>
+        <button className={styles.toggle} onClick={() => isOpenSet(!isOpen)}>
+          {isOpen ? "⬇️" : "⬆️"}
+        </button>
+      </div>
       {isOpen ? (
         <div className={`${styles.legendContent}`}>
           <h2 className={styles.header}>Legend:</h2>{" "}

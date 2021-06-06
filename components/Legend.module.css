@@ -17,11 +17,16 @@
   position: fixed;
 }
 
-.toggle {
+.toggleWrapper {
   position: absolute;
-  left: 50%;
-  right: 50%;
+  width: 100%;
   top: -16px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle {
   font-size: 18px;
 }
 
