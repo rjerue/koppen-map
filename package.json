@@ -2,7 +2,7 @@
   "name": "with-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_OPTIONS=--max-old-space-size=4096 next",
     "data": "node data",
     "build": "yarn data && next build",
     "start": "next start"
@@ -13,15 +13,19 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-leaflet": "^3.2.0",
-    "react-promise-suspense": "^0.3.3"
+    "react-promise-suspense": "^0.3.3",
+    "topojson": "^3.0.2"
   },
   "devDependencies": {
     "@types/leaflet": "^1.7.1",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@types/topojson": "^3.2.3",
     "copy-webpack-plugin": "^9.0.0",
+    "mapshaper": "^0.5.58",
     "next-pwa": "^5.2.21",
+    "node-exec-promise": "^1.0.2",
     "typescript": "4.0"
   },
   "license": "MIT"
