@@ -1,20 +1,30 @@
 import React, { Suspense } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import styles from "./Map.module.css";
 import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
 import usePromise from "react-promise-suspense";
+import { TopoJSON } from "./Topojson";
 
-const onGeoJSONFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
+const onFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   if (feature.properties && feature.properties.climate) {
     const code = feature.properties.climate.split(" ")[0];
     layer.bindPopup(koppen[code].title);
   }
 };
 
-const getData = (code) => {
+const getData = (code: string) => {
   return import(`../data/${code}.json`).then((d) => d.default);
 };
+
+const data = Object.keys(koppen).reduce(
+  (accum, e) => ({ ...accum, [e]: getData(e) }),
+  {} as Record<string, ReturnType<typeof getData>>
+);
+
+function retrieveData(code: string) {
+  return data[code];
+}
 
 const GeoJsonLayer: React.FC<{ code: string; active: boolean }> = ({
   code,
@@ -22,15 +32,15 @@ const GeoJsonLayer: React.FC<{ code: string; active: boolean }> = ({
 }) => {
   const data = usePromise(getData, [code]);
   return active ? (
-    <GeoJSON
+    <TopoJSON
       style={{
         color: koppen[code].color,
         fillOpacity: 0.5,
       }}
       key={code}
       attribution='Dataset: <a href="https://staging.igrac.kartoza.com/layers/igrac:other_climate_2007_koppen_geiger">igrac</a>'
-      data={data as any}
-      onEachFeature={onGeoJSONFeature}
+      data={data}
+      onEachFeature={onFeature}
     />
   ) : null;
 };
