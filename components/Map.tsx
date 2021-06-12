@@ -7,8 +7,8 @@ import usePromise from "react-promise-suspense";
 import { TopoJSON } from "./Topojson";
 
 const onFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
-  if (feature.properties && feature.properties.climate) {
-    const code = feature.properties.climate.split(" ")[0];
+  if (feature.properties && feature.properties.code) {
+    const code = feature.properties.code;
     layer.bindPopup(koppen[code].title);
   }
 };

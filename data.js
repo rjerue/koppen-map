@@ -28,7 +28,6 @@ function duplicate360(feature, code) {
       coordinates: c,
     },
     properties: {
-      climate: feature.properties.climate,
       code,
     },
   });
