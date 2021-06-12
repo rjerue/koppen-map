@@ -10,10 +10,11 @@ function makeName(e) {
   return code;
 }
 
+const boundary = 400;
 const transform = (func) => (coordinates) => {
   const projected = coordinates.map(([l, r]) => [func(l), r]);
   const removeBadData = projected.filter(([l]) => {
-    return l >= -450 && l <= 450;
+    return l >= -boundary && l <= boundary;
   });
   return removeBadData;
 };

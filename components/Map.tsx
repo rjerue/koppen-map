@@ -17,20 +17,20 @@ const getData = (code: string) => {
   return import(`../data/${code}.json`).then((d) => d.default);
 };
 
-const data = Object.keys(koppen).reduce(
+const mapData = Object.keys(koppen).reduce(
   (accum, e) => ({ ...accum, [e]: getData(e) }),
   {} as Record<string, ReturnType<typeof getData>>
 );
 
 function retrieveData(code: string) {
-  return data[code];
+  return mapData[code];
 }
 
 const GeoJsonLayer: React.FC<{ code: string; active: boolean }> = ({
   code,
   active,
 }) => {
-  const data = usePromise(getData, [code]);
+  const data = usePromise(retrieveData, [code]);
   return active ? (
     <TopoJSON
       style={{
