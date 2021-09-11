@@ -27,11 +27,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           name="description"
-          content="An Interactive Köppen–Geiger Climate Map"
+          content="An Interactive Köppen–Geiger Climate Map of the entire world"
         />
         <meta
           name="keywords"
-          content="Köppen, Koppen, Geiger, Climate, Classification, Interactive, Map"
+          content="Köppen, Koppen, Geiger, Climate, Classification, Interactive, Map, World"
         />
         <link rel="manifest" href="/manifest.json" />
         <link
