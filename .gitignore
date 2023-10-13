@@ -43,3 +43,6 @@ public/workbox-*
 
 # vscode
 .vscode
+
+.yarn/cache
+.yarn/install-state.gz

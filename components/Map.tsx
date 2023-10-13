@@ -56,8 +56,8 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         worldCopyJump
       >
         <TileLayer
-          attribution='Tiles: <a href="http://stamen.com">Stamen</a>, Map: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png"
+          attribution='Tiles: <a href="http://stamen.com">Stamen</a>, <a href="https://www.stadiamaps.com/" target="_blank">Stadia</a>, Map: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.jpg"
         />
         {Object.keys(koppen).map((code) => {
           return (
