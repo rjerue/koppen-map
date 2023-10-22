@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
-import { MapContainer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import styles from "./Map.module.css";
 import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
 import usePromise from "react-promise-suspense";
 import { TopoJSON } from "./Topojson";
-import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
 
 const onFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   if (feature.properties && feature.properties.code) {
@@ -57,12 +56,12 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         center={[51.505, -0.09]}
         zoom={3}
         minZoom={3}
-        maxZoom={14}
+        maxZoom={17}
         worldCopyJump
       >
-        <VectorBasemapLayer
-          name="ArcGIS:Topographic"
-          apiKey="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
+        <TileLayer
+          url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+          attribution='Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         />
         {Object.keys(koppen).map((code) => {
           return (
