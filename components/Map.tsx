@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer } from "react-leaflet";
 import styles from "./Map.module.css";
 import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
 import usePromise from "react-promise-suspense";
 import { TopoJSON } from "./Topojson";
+import { BasemapLayer } from "react-esri-leaflet";
 
 const onFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   if (feature.properties && feature.properties.code) {
@@ -45,6 +46,9 @@ const GeoJsonLayer: React.FC<{ code: string; active: boolean }> = ({
   ) : null;
 };
 
+// esri https://basemaps-api.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/4/6/10.pbf?token=AAPK9250e700411749c9b0f45c5c54662f24eGi6gpLH6WTEpI4rw0r6VT0MBuAEWhFUpHonLTRzLQfho48WPf4vBRkm0QFyErIP
+//   me https://basemaps-api.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/3/0/05.pbf?token=AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S
+
 const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
   return (
     <div className={`${styles.map} ${styles.mapWrapper}`}>
@@ -55,9 +59,9 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         minZoom={3}
         worldCopyJump
       >
-        <TileLayer
-          attribution='Tiles: <a href="http://stamen.com">Stamen</a>, <a href="https://www.stadiamaps.com/" target="_blank">Stadia</a>, Map: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.jpg"
+        <BasemapLayer
+          name="Topographic"
+          accessToken="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
         />
         {Object.keys(koppen).map((code) => {
           return (

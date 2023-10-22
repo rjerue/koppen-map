@@ -1515,14 +1515,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-leaflet/core@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@react-leaflet/core@npm:1.1.0"
+"@react-leaflet/core@npm:^2.0.0, @react-leaflet/core@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@react-leaflet/core@npm:2.1.0"
   peerDependencies:
-    leaflet: ^1.7.1
-    react: ^17.0.1
-    react-dom: ^17.0.1
-  checksum: 314b689b047622e87a128cc5c0b345ac86d355fda92648b696a540d831f86eee63eb9639c6329e50d3b2602b9c937a412b5991661c470dc7b5f19e05e69adc94
+    leaflet: ^1.9.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: c11a15fb71a9929b809f346d8f784d0f32afa373bc096aa1f0d0fa6a2ef0ce632a563c31876abf8b255a12a19d6e80ece31e2ef505f79a678bbf073e7a6c5c60
   languageName: node
   linkType: hard
 
@@ -1605,6 +1605,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@terraformer/arcgis@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "@terraformer/arcgis@npm:2.1.2"
+  dependencies:
+    "@terraformer/common": ^2.1.2
+  checksum: 660ad491973c8eb950fa729eec3271f9767afe7ebb217230e4bd38687864fc044e8f01befe95a9b9c62c3730af58ee121923a98b4be51828779067a748c8ebc4
+  languageName: node
+  linkType: hard
+
+"@terraformer/common@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@terraformer/common@npm:2.1.2"
+  checksum: 78807f8102f478f97193cb6eb79fb4976462ba75fbfb8ec0b2ac21f3d2554177bfd78f2b19ed0a111c03e3047ac2110656f01a7de57712f86cd44fd8cda2c049
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -1618,6 +1634,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: e7ad32de633984b38ffbee4fce000bd05e92df949c2f21d8230c19c3e32841cb3ffb57a87f6c3602c7705bc142c1a48766ed5d1643c08dfb7c3de5c681e3829a
+  languageName: node
+  linkType: hard
+
+"@types/esri-leaflet@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/esri-leaflet@npm:3.0.2"
+  dependencies:
+    "@types/leaflet": "*"
+  checksum: efc19951ed1da99e33a723cfdefcd102b7aa43a423e8d242bc77f4910a606303663ffe5d392637aafa2fc2265810560f7840657a891524f7edc495b6c8b5105d
   languageName: node
   linkType: hard
 
@@ -1665,6 +1690,15 @@ __metadata:
   version: 7.0.7
   resolution: "@types/json-schema@npm:7.0.7"
   checksum: ea3b409235862d28122751158f4054e729e31ad844bd7b8b23868f38c518047b1c0e8e4e7cc293e02c31a2fb8cfc8a4506c2de2a745cf78b218e064fb8898cd4
+  languageName: node
+  linkType: hard
+
+"@types/leaflet@npm:*":
+  version: 1.9.7
+  resolution: "@types/leaflet@npm:1.9.7"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 8adbd48219bf210cd66d21cb787576eb158bd674d0625042cac27baf2f60e335c922349058c2323d7bf178163c46ceaf23ab1b94c0f7a6ae51d35d085d8b2095
   languageName: node
   linkType: hard
 
@@ -2723,6 +2757,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esri-leaflet@npm:^3.0.11":
+  version: 3.0.11
+  resolution: "esri-leaflet@npm:3.0.11"
+  dependencies:
+    "@terraformer/arcgis": ^2.1.0
+    tiny-binary-search: ^1.0.3
+  peerDependencies:
+    leaflet: ^1.0.0
+  checksum: 558d49def5439f6d6939acea86558263262b39f9489f34effd12bb96f64a7c0742d3e23430bb463d27fade547c711e607eac025f4e4e33ed34a8ab7fbbf0bc5b
+  languageName: node
+  linkType: hard
+
 "estree-walker@npm:^1.0.1":
   version: 1.0.1
   resolution: "estree-walker@npm:1.0.1"
@@ -3753,10 +3799,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"leaflet@npm:^1.7.1":
-  version: 1.7.1
-  resolution: "leaflet@npm:1.7.1"
-  checksum: f69149ab482eeb6cdabd837939c4782c97a7a18bc0b2a9330d4a828ca0dc6e035981f2ecdb71c6646aa173bc369cd3b4fd6bbe5d81df4c59c45254f9e9361d03
+"leaflet@npm:^1.9.4":
+  version: 1.9.4
+  resolution: "leaflet@npm:1.9.4"
+  checksum: bfc79f17a247b37b92d84b3c78702501603392d6589fde606de4a825d11f1609d90225388834f2e0709dac327e52dcd4b4b9cc9fd3d590060c5b1e53b84fa6c6
   languageName: node
   linkType: hard
 
@@ -4552,16 +4598,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-leaflet@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "react-leaflet@npm:3.2.0"
+"react-esri-leaflet@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "react-esri-leaflet@npm:2.0.1"
   dependencies:
-    "@react-leaflet/core": ^1.1.0
+    "@react-leaflet/core": ^2.0.0
   peerDependencies:
-    leaflet: ^1.7.1
-    react: ^17.0.1
-    react-dom: ^17.0.1
-  checksum: 49b540952d883893ad7e0ec70679bfc5e443ba7c25a6b74ec11bfd114f0fd3be33abb86f40acee490abfe6670951f3ce8c2ac86cc32d308c7fd2dc31a684ca57
+    esri-leaflet: ^3.0.8
+    esri-leaflet-cluster: ^3.0.0
+    esri-leaflet-geocoder: ^3.1.3
+    esri-leaflet-heatmap: ^2.0.1
+    esri-leaflet-vector: ^3.1.2
+    leaflet: ^1.8.0
+    leaflet.heat: ^0.2.0
+    leaflet.markercluster: ^1.5.3
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    react-leaflet: ^4.0.0
+  checksum: cf3b4f643ddcd7f9096cc3bc64891b8c1ff1005c9a99f59fd2cf7953ae255daac08bdc10bcc63f353349b50fa71f716a81fef89463a9ca68fbd59838a0e9b5ea
+  languageName: node
+  linkType: hard
+
+"react-leaflet@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "react-leaflet@npm:4.2.1"
+  dependencies:
+    "@react-leaflet/core": ^2.1.0
+  peerDependencies:
+    leaflet: ^1.9.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 79222c2ba0c62facaa3dfee18f7a692f917a4fb744ba8d22269a77f9779fc9634962230eb51265ff2563a1a5e3287d2ec16640ee7f5de459458027e05cd756ba
   languageName: node
   linkType: hard
 
@@ -5371,6 +5438,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-binary-search@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tiny-binary-search@npm:1.0.3"
+  checksum: 0ac4a0e14fc53fc92ca07f4a350233c5f097a17bf658d7cf4a77b14fc88466295128bebdf8467feefab8460b7b8a07b672e57a70ad2684944d10c1a3e19e18e2
+  languageName: node
+  linkType: hard
+
 "to-fast-properties@npm:^2.0.0":
   version: 2.0.0
   resolution: "to-fast-properties@npm:2.0.0"
@@ -5760,19 +5834,22 @@ __metadata:
   resolution: "with-typescript@workspace:."
   dependencies:
     "@imbios/next-pwa": ^1.1.1
+    "@types/esri-leaflet": ^3.0.2
     "@types/leaflet": ^1.7.1
     "@types/node": ^12.12.21
     "@types/react": ^17.0.2
     "@types/react-dom": ^17.0.1
     "@types/topojson": ^3.2.3
     copy-webpack-plugin: ^9.0.0
-    leaflet: ^1.7.1
+    esri-leaflet: ^3.0.11
+    leaflet: ^1.9.4
     mapshaper: ^0.5.58
     next: ^13.5.4
     node-exec-promise: ^1.0.2
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-leaflet: ^3.2.0
+    react-esri-leaflet: ^2.0.1
+    react-leaflet: ^4.2.1
     react-promise-suspense: ^0.3.3
     topojson: ^3.0.2
     typescript: ^5.2.2
