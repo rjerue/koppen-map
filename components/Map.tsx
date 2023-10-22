@@ -57,11 +57,12 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         center={[51.505, -0.09]}
         zoom={3}
         minZoom={3}
+        maxZoom={12}
         worldCopyJump
       >
         <BasemapLayer
-          name="Topographic"
-          accessToken="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
+          name="NationalGeographic"
+          token="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
         />
         {Object.keys(koppen).map((code) => {
           return (
