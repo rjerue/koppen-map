@@ -1,5 +1,6 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import "../global.css";
 
 // This default export is required in a new `pages/_app.js` file.
@@ -48,6 +49,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
         <meta name="theme-color" content="#ffffff" />
       </Head>
+      <GoogleAnalytics trackPageViews gaMeasurementId={"G-HKH1J86NRV"} />
       <Component {...pageProps} />
     </>
   );
