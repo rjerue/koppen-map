@@ -7,9 +7,14 @@
     "build": "yarn data && next build",
     "start": "next start"
   },
+  "browserslist": [
+    "defaults, not op_mini all"
+  ],
   "dependencies": {
     "esri-leaflet": "^3.0.11",
+    "esri-leaflet-vector": "^4.2.1",
     "leaflet": "^1.9.4",
+    "maplibre-gl": "^3.5.1",
     "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

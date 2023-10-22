@@ -5,7 +5,7 @@ import { koppen } from "../koppen";
 import { GeoJSONOptions } from "leaflet";
 import usePromise from "react-promise-suspense";
 import { TopoJSON } from "./Topojson";
-import { BasemapLayer } from "react-esri-leaflet";
+import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
 
 const onFeature: GeoJSONOptions["onEachFeature"] = (feature, layer) => {
   if (feature.properties && feature.properties.code) {
@@ -57,12 +57,12 @@ const Map: React.FC<{ state: Record<string, boolean> }> = ({ state }) => {
         center={[51.505, -0.09]}
         zoom={3}
         minZoom={3}
-        maxZoom={12}
+        maxZoom={14}
         worldCopyJump
       >
-        <BasemapLayer
-          name="NationalGeographic"
-          token="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
+        <VectorBasemapLayer
+          name="ArcGIS:Topographic"
+          apiKey="AAPK1130609626e347eb8e75e5d63e911103YzjrPTQ29pez_5weSVVPOZ9CpO29fiSLxNb1EF7MRt8G63CWGQlir1-sN7yANS2S"
         />
         {Object.keys(koppen).map((code) => {
           return (
