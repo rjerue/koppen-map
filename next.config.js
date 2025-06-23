@@ -5,4 +5,6 @@ const withPWA = require("@imbios/next-pwa")({
   runtimeCaching,
 });
 
-module.exports = withPWA({});
+module.exports = withPWA({
+  output: "export",
+});
