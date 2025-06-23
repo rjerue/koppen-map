@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 next",
     "data": "node data",
-    "build": "yarn data && next build",
+    "build": "npm run data && next build",
     "start": "next start"
   },
   "browserslist": [
